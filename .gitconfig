@@ -1,0 +1,12 @@
+[user]
+	email = t.s.jaikrishna@gmail.com
+	name = Jaikrishna Tanjore Sukumar
+[core]
+	editor = vim
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true
