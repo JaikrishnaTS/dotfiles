@@ -14,7 +14,7 @@ mkdir -p $HOME/.vim/colors $HOME/.vim/backup $HOME/.vim/swp $HOME/.vim/autoload
 wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O $HOME/.vim/autoload/plug.vim
 
 # install the plugins through vim-plug
-vim - +PlugInstall +qall
+vim +PlugInstall +qall
 
 ## Setup tmux
 # download tmux conf
