@@ -16,12 +16,6 @@ wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O $HOM
 # install the plugins through vim-plug
 vim - +PlugInstall +qall
 
-# no tmux early exit
-if [ "$#" -e 1 ]; then
-    head -n -8 $HOME/.bash_profile $HOME/.bash_profile
-    exit
-fi
-
 ## Setup tmux
 # download tmux conf
 wget https://raw.githubusercontent.com/JaikrishnaTS/dotfiles/master/.tmux.conf -O $HOME/.tmux.conf
