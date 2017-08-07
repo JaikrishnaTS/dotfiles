@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " setup vim-airline
-let g:airline_theme='powerlineish'
+let g:airline_theme='hybridline'
 let g:airline_powerline_fonts = 1
 
 " unicode symbols if powerline absent
