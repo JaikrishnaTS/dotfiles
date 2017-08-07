@@ -16,6 +16,13 @@ call plug#end()
 let g:airline_theme='hybridline'
 let g:airline_powerline_fonts = 1
 
+" buffer settings
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+set hidden
+
 " unicode symbols if powerline absent
 " if !exists('g:airline_symbols')
 "         let g:airline_symbols = {}
