@@ -26,9 +26,5 @@ alias l='ls -CF'
 
 # keep this at last
 if [[ -z "$TMUX" ]]; then
-    if tmux has-session 2>/dev/null; then
-        exec tmux attach
-    else
-        exec tmux
-    fi
+    exec tmux new-session -A -s tmux
 fi
