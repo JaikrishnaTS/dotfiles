@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-scripts/DoxygenToolkit.vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'nanotech/jellybeans.vim'
+    Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " setup vim-airline
@@ -66,3 +67,5 @@ colorscheme jellybeans
 
 set splitbelow
 set splitright
+
+let g:vimwiki_list = [{'path': '~/', 'syntax': 'markdown', 'ext': '.md'}]
