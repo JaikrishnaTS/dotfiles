@@ -1,3 +1,6 @@
+
+set nocompatible
+
 " setup colors
 set term=screen-256color
 set t_Co=256
@@ -17,19 +20,15 @@ call plug#end()
 let g:airline_theme='hybridline'
 let g:airline_powerline_fonts = 1
 
-" buffer settings
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_min_count = 2
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-set hidden
+" load doxygen
+let g:load_doxygen_syntax = 1
+
+colorscheme jellybeans  " set color scheme
 
 " unicode symbols if powerline absent
 " if !exists('g:airline_symbols')
 "         let g:airline_symbols = {}
 " endif
-" 
 " let g:airline_theme='powerlineish'
 " let g:airline_left_sep = '▶'
 " let g:airline_right_sep = '◀'
@@ -38,34 +37,62 @@ set hidden
 " let g:airline_symbols.paste = 'ρ'
 " let g:airline_symbols.whitespace = 'Ξ'
 
-" remove bottom bar
-set noshowmode
-set laststatus=2
+" buffer settings
+" Enable buffer bar at top - only when >1 buffer
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
+set hidden " allow to leave unsaved buffers
 
-" netrw options
+" vimwiki markdown by default
+let g:vimwiki_list = [{'path': '~/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" netrw settings
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
-" my options
+" start in line where I left
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
-let g:load_doxygen_syntax = 1
-set colorcolumn=80
-set number
-set tabpagemax=100
-set expandtab
-set tabstop=4
+
+" key remaps
+nnoremap ; :
+let mapleader=','
+set pastetoggle=<leader>p   " toggle paste mode with leader p
+
+set colorcolumn=80  " 80 char line
+set number          " show line numbers
+set tabpagemax=100  " increase max tabs
+
+" tab settings
+set expandtab       " tabs to spaces
+set tabstop=4       " 4 spaces in a tab
 set shiftwidth=4
 set softtabstop=4
 
-set mouse=a
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
-colorscheme jellybeans
+" search settings 
+set incsearch       " show first match as entered
+set hlsearch        " highlight all after <cr>, :noh to unhighlight
+set ignorecase smartcase    " ignore case if all lowercase in query
+nmap <silent> <leader>/ :nohlsearch<CR>    " press ,/ to unhighlight
 
+set title           " change terminal title
+set mouse=a         " enable mouse always
+
+" dir settings
+set backupdir=~/.vim/backup//   " change backup dir
+set directory=~/.vim/swp//      " change swap dir
+
+" split settings
 set splitbelow
 set splitright
 
-let g:vimwiki_list = [{'path': '~/', 'syntax': 'markdown', 'ext': '.md'}]
+" command bar settings
+set laststatus=2    " always show airline
+set showcmd         " show partial commands in command bar
+set noshowmode      " dont show current mode in command bar
+set wildmenu        " menu for command completion
+" set wildmode=list:longest,full " complete like shell, also adds multiple rows
+
