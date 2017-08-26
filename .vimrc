@@ -5,6 +5,8 @@ set nocompatible
 set term=screen-256color
 set t_Co=256
 
+set encoding=utf8
+
 " setup vim-plug and plugins
 call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
@@ -13,7 +15,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-scripts/DoxygenToolkit.vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'nanotech/jellybeans.vim'
-    Plug 'vimwiki/vimwiki'
+    Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " setup vim-airline
@@ -47,6 +49,11 @@ set hidden " allow to leave unsaved buffers
 " vimwiki markdown by default
 let g:vimwiki_list = [{'path': '~/', 'syntax': 'markdown', 'ext': '.md'}]
 
+" adding to vim-airline's tabline 
+let g:webdevicons_enable_airline_tabline = 1
+" adding to vim-airline's statusline 
+let g:webdevicons_enable_airline_statusline = 1
+
 " netrw settings
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
@@ -60,7 +67,6 @@ endif
 " key remaps
 nnoremap ; :
 let mapleader=','
-set pastetoggle=<leader>p   " toggle paste mode with leader p
 
 set colorcolumn=80  " 80 char line
 set number          " show line numbers
@@ -77,7 +83,9 @@ set incsearch       " show first match as entered
 set hlsearch        " highlight all after <cr>, :noh to unhighlight
 set ignorecase smartcase    " ignore case if all lowercase in query
 nmap <silent> <leader>/ :nohlsearch<CR>    " press ,/ to unhighlight
+nmap <silent> <leader>l :set invnumber<CR> " press ,l to toggle line numbers
 
+set pastetoggle=<leader>p   " toggle paste mode with leader p
 set title           " change terminal title
 set mouse=a         " enable mouse always
 
