@@ -104,3 +104,7 @@ set noshowmode      " dont show current mode in command bar
 set wildmenu        " menu for command completion
 " set wildmode=list:longest,full " complete like shell, also adds multiple rows
 
+" enable manpage support
+runtime! ftplugin/man.vim
+au FileType man setlocal nonumber colorcolumn=
+let g:airline#extensions#tabline#enabled = 0

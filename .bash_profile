@@ -23,6 +23,14 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias lz='ls -Z'
+
+alias vdiff='vimdiff'
+
+# vim Man page
+vman() {
+    vim -c "Man $1 $2" -c 'silent only'
+}
 
 # keep this at last
 if [[ -z "$TMUX" ]]; then
