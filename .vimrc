@@ -83,7 +83,11 @@ set incsearch       " show first match as entered
 set hlsearch        " highlight all after <cr>, :noh to unhighlight
 set ignorecase smartcase    " ignore case if all lowercase in query
 nmap <silent> <leader>/ :nohlsearch<CR>    " press ,/ to unhighlight
-nmap <silent> <leader>l :set invnumber<CR> " press ,l to toggle line numbers
+nmap <silent> <leader>n :set invnumber<CR> " press ,l to toggle line numbers
+nmap <leader>h <C-W><C-H>
+nmap <leader>j <C-W><C-J>
+nmap <leader>k <C-W><C-K>
+nmap <leader>l <C-W><C-L>
 
 set pastetoggle=<leader>p   " toggle paste mode with leader p
 set title           " change terminal title
@@ -107,4 +111,4 @@ set wildmenu        " menu for command completion
 " enable manpage support
 runtime! ftplugin/man.vim
 au FileType man setlocal nonumber colorcolumn=
-let g:airline#extensions#tabline#enabled = 0
+"let g:airline#extensions#tabline#enabled = 0
