@@ -7,6 +7,10 @@ set t_Co=256
 
 set encoding=utf8
 
+" key remaps
+nnoremap ; :
+let mapleader=','
+
 " setup vim-plug and plugins
 call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
@@ -32,7 +36,17 @@ colorscheme jellybeans  " set color scheme
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 set hidden " allow to leave unsaved buffers
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 " adding to vim-airline's tabline 
 let g:webdevicons_enable_airline_tabline = 1
@@ -48,10 +62,6 @@ let g:netrw_winsize = 25
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
-
-" key remaps
-nnoremap ; :
-let mapleader=','
 
 set colorcolumn=80  " 80 char line
 set number          " show line numbers
