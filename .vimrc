@@ -7,8 +7,6 @@ set t_Co=256
 
 set encoding=utf8
 
-colorscheme jellybeans  " set color scheme
-
 " key remaps
 nnoremap ; :
 let mapleader=','
@@ -31,6 +29,8 @@ let g:airline_powerline_fonts = 1
 
 " load doxygen
 let g:load_doxygen_syntax = 1
+
+colorscheme jellybeans  " set color scheme
 
 " buffer settings
 " Enable buffer bar at top - only when >1 buffer
