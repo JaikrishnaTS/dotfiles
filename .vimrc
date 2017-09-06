@@ -27,27 +27,12 @@ let g:load_doxygen_syntax = 1
 
 colorscheme jellybeans  " set color scheme
 
-" unicode symbols if powerline absent
-" if !exists('g:airline_symbols')
-"         let g:airline_symbols = {}
-" endif
-" let g:airline_theme='powerlineish'
-" let g:airline_left_sep = '▶'
-" let g:airline_right_sep = '◀'
-" let g:airline_symbols.linenr = '¶'
-" let g:airline_symbols.branch = '⎇'
-" let g:airline_symbols.paste = 'ρ'
-" let g:airline_symbols.whitespace = 'Ξ'
-
 " buffer settings
 " Enable buffer bar at top - only when >1 buffer
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 set hidden " allow to leave unsaved buffers
-
-" vimwiki markdown by default
-let g:vimwiki_list = [{'path': '~/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " adding to vim-airline's tabline 
 let g:webdevicons_enable_airline_tabline = 1
@@ -88,6 +73,7 @@ nmap <leader>h <C-W><C-H>
 nmap <leader>j <C-W><C-J>
 nmap <leader>k <C-W><C-K>
 nmap <leader>l <C-W><C-L>
+nmap <leader>w :w<CR>
 
 set pastetoggle=<leader>p   " toggle paste mode with leader p
 set title           " change terminal title
