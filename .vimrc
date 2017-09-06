@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'nanotech/jellybeans.vim'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'Rykka/riv.vim'
 call plug#end()
 
 " setup vim-airline
@@ -52,6 +53,9 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 let g:webdevicons_enable_airline_tabline = 1
 " adding to vim-airline's statusline 
 let g:webdevicons_enable_airline_statusline = 1
+
+" riv disable folding
+let g:riv_disable_folding = 1
 
 " netrw settings
 let g:netrw_liststyle = 3
