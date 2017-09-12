@@ -81,8 +81,10 @@ set softtabstop=4
 set incsearch       " show first match as entered
 set hlsearch        " highlight all after <cr>, :noh to unhighlight
 set ignorecase smartcase    " ignore case if all lowercase in query
-nmap <silent> <leader>/ :nohlsearch<CR>    " press ,/ to unhighlight
-nmap <silent> <leader>n :set invnumber<CR> " press ,l to toggle line numbers
+" press ,/ to unhighlight
+nmap <silent> <leader>/ :nohlsearch<CR>
+" press ,n to toggle line numbers
+nmap <silent> <leader>n :set invnumber<CR>
 nmap <leader>h <C-W><C-H>
 nmap <leader>j <C-W><C-J>
 nmap <leader>k <C-W><C-K>
