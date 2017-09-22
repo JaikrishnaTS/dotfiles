@@ -70,6 +70,8 @@ endif
 set colorcolumn=80  " 80 char line
 set number          " show line numbers
 set tabpagemax=100  " increase max tabs
+set textwidth=79    " autowrap beyond 79 chars
+au Filetype * set formatoptions+=t " enable textwidth for all files
 
 " tab settings
 set expandtab       " tabs to spaces
@@ -114,3 +116,12 @@ set wildmenu        " menu for command completion
 runtime! ftplugin/man.vim
 au FileType man setlocal nonumber colorcolumn=
 "let g:airline#extensions#tabline#enabled = 0
+
+" Underline function
+function! s:Underline(chars)
+  let chars = empty(a:chars) ? '-' : a:chars
+  let nr_columns = virtcol('$') - 1
+  let uline = repeat(chars, (nr_columns / len(chars)) + 1)
+  put =strpart(uline, 0, nr_columns)
+endfunction
+command! -nargs=? Underline call s:Underline(<q-args>)
