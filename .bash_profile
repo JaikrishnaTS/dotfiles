@@ -34,7 +34,7 @@ vman() {
 }
 
 fixssh() {
-    eval $(tmux show-env -s |grep '^SSH_')
+    eval $(tmux show-env -s |grep '^SSH_AUTH_SOCK')
 }
 # keep this at last
 if [[ -z "$TMUX" ]]; then
