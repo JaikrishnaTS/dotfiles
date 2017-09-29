@@ -24,6 +24,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias lz='ls -Z'
+alias mux='exec tmux new-session -A -s tmux'
 
 alias vdiff='vimdiff'
 
@@ -32,6 +33,9 @@ vman() {
     vim -c "Man $1 $2" -c 'silent only'
 }
 
+fixssh() {
+    eval $(tmux show-env -s |grep '^SSH_')
+}
 # keep this at last
 if [[ -z "$TMUX" ]]; then
     exec tmux new-session -A -s tmux
