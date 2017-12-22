@@ -3,6 +3,8 @@
 	name = Jaikrishna Tanjore Sukumar
 [core]
 	editor = vim
+[diff]
+    tool = vimdiff
 [color]
     diff = auto
     status = auto
