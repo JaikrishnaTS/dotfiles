@@ -67,6 +67,7 @@ let g:netrw_winsize = 25
 " start in line where I left
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    au BufNewFile,BufRead *.service set syntax=dosini
 endif
 
 set colorcolumn=80  " 80 char line
