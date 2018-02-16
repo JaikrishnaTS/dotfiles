@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'nanotech/jellybeans.vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'Rykka/riv.vim'
+    Plug 'nvie/vim-flake8'
 call plug#end()
 
 " setup vim-airline
