@@ -17,11 +17,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-scripts/DoxygenToolkit.vim'
-    Plug 'christoomey/vim-tmux-navigator'
     Plug 'nanotech/jellybeans.vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'Rykka/riv.vim'
     Plug 'nvie/vim-flake8'
+    Plug 'fatih/vim-go'
 call plug#end()
 
 " setup vim-airline
@@ -40,6 +40,8 @@ let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 set hidden " allow to leave unsaved buffers
+
+" buffer navigation
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -91,11 +93,6 @@ set ignorecase smartcase    " ignore case if all lowercase in query
 nmap <silent> <leader>/ :nohlsearch<CR>
 " press ,n to toggle line numbers
 nmap <silent> <leader>n :set invnumber<CR>
-nmap <leader>h <C-W><C-H>
-nmap <leader>j <C-W><C-J>
-nmap <leader>k <C-W><C-K>
-nmap <leader>l <C-W><C-L>
-nmap <leader>w :w<CR>
 
 set pastetoggle=<leader>p   " toggle paste mode with leader p
 set title           " change terminal title
@@ -109,6 +106,13 @@ set directory=~/.vim/swp//      " change swap dir
 set splitbelow
 set splitright
 
+" split navigation
+nmap <leader>h <C-W><C-H>
+nmap <leader>j <C-W><C-J>
+nmap <leader>k <C-W><C-K>
+nmap <leader>l <C-W><C-L>
+nmap <leader>w :w<CR>
+
 " command bar settings
 set laststatus=2    " always show airline
 set showcmd         " show partial commands in command bar
@@ -119,7 +123,6 @@ set wildmenu        " menu for command completion
 " enable manpage support
 runtime! ftplugin/man.vim
 au FileType man setlocal nonumber colorcolumn=
-"let g:airline#extensions#tabline#enabled = 0
 
 " Underline function
 function! s:Underline(chars)
