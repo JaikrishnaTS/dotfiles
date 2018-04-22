@@ -32,11 +32,18 @@ alias vdiff='vimdiff'
 vman() {
     vim -c "Man $1 $2" -c 'silent only'
 }
+_vman () {
+    _completion_loader man
+    _man
+}
+complete -F _vman vman
 
 fixssh() {
     eval $(tmux show-env -s |grep '^SSH_AUTH_SOCK')
 }
-# keep this at last
-if [[ -z "$TMUX" ]]; then
-    exec tmux new-session -A -s tmux
+
+if command -v tmux>/dev/null; then
+    if [[ $TERM =~ xterm ]] && [ -z $TMUX ]; then
+        exec tmux new-session -A -s tmux
+    fi
 fi
