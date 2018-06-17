@@ -1,3 +1,16 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/go/bin:$HOME/.npm-global/bin
+
+export PATH
+
 PS1="\$? [\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;12m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \W]\\$ \[$(tput sgr0)\]"
 
 # set EDITOR
@@ -43,7 +56,9 @@ fixssh() {
 }
 
 if command -v tmux>/dev/null; then
-    if [[ $TERM =~ xterm ]] && [ -z $TMUX ]; then
-        exec tmux new-session -A -s tmux
+    if [[ $TERM =~ xterm ]] && [ -z $TMUX ] ; then
+        if [[ $(tmux list-clients | wc -l) -eq 0 ]]; then
+            exec tmux new-session -A -s tmux
+        fi
     fi
 fi
