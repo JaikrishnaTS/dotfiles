@@ -1,0 +1,5 @@
+[Unit]
+Description=Target started with i3
+
+[Install]
+WantedBy=default.target

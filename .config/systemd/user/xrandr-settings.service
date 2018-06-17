@@ -1,0 +1,10 @@
+[Unit]
+Description=Set xrandr settings
+Before=redshift.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xrandr --output eDP-1 --off
+
+[Install]
+WantedBy=graphical-login.target

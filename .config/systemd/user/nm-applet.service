@@ -1,0 +1,9 @@
+[Unit]
+Description=Network Manager Applet
+PartOf=graphical-login.target
+
+[Service]
+ExecStart=/usr/bin/nm-applet
+
+[Install]
+WantedBy=graphical-login.target
