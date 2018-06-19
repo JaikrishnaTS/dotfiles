@@ -192,8 +192,8 @@ bar {
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # shortcuts
 bindsym $mod+g exec google-chrome
@@ -201,14 +201,15 @@ bindsym $mod+g exec google-chrome
 # screenshots
 # Ctrl -> selection; Shift -> clipboard
 # all monitors to file
-bindsym --release Print exec "scrot -m ~/Pictures/screenshot-$(date +%F_%T).png"
+bindsym --release Print exec "import -window root ~/Pictures/screenshot-$(date +%F_%T).png"
 # selection to file
-bindsym --release Control+Print exec "scrot -s ~/Pictures/screenshot-$(date +%F_%T).png"
+bindsym --release Control+Print exec "import ~/Pictures/screenshot-$(date +%F_%T).png"
 # all monitors to clipboard
-bindsym --release Shift+Print exec "scrot -m /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym --release Shift+Print exec "import -window root png:- | xclip -selection c -t image/png"
 # selection to clipboard
-bindsym --release Control+Shift+Print exec "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym --release Control+Shift+Print exec "import png:- | xclip -selection c -t image/png"
 
+#LOCAL_CHANGES
 # workspace to monitor mapping
 #workspace $ws1 output HDMI-2
 #workspace $ws2 output eDP-1
