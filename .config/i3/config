@@ -9,8 +9,6 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec systemctl --user start graphical-login.target
-#exec systemctl --user start xrandr-settings.service
 
 set $mod Mod4
 
@@ -138,17 +136,24 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-set $exit_control System Control [S=Shutdown, R=Restart, E=logout, L=lock]
+# locks
 set $ilock i3lock -c 000000
-bindsym $mod+Control+e mode "$exit_control"
+bindsym $mod+Control+l exec --no-startup-id "$ilock"
+
+# exit_control
+set $exit_control System Control [S=Shutdown, R=Restart, E=logout, L=lock]
 
 mode "$exit_control" {
     bindsym e mode "default"; exit
-    bindsym l mode "default"; exec --no-startup-id "$ilock"
+    bindsym r mode "default"; exec --no-startup-id systemctl reboot; mode "default"
+    bindsym s mode "default"; exec --no-startup-id systemctl poweroff; mode "default"
+    bindsym l mode "default"; exec --no-startup-id "$ilock"; mode "default"
     bindsym Escape mode "default"
 }
+
+bindsym $mod+Control+e mode "$exit_control"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -183,8 +188,6 @@ bar {
         status_command i3status
 }
 
-bindsym $mod+Control+l exec --no-startup-id i3lock -c 000000
-
 # media/brightness buttons
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
@@ -194,3 +197,23 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 
 # shortcuts
 bindsym $mod+g exec google-chrome
+
+# screenshots
+# Ctrl -> selection; Shift -> clipboard
+# all monitors to file
+bindsym --release Print exec "scrot -m ~/Pictures/screenshot-$(date +%F_%T).png"
+# selection to file
+bindsym --release Control+Print exec "scrot -s ~/Pictures/screenshot-$(date +%F_%T).png"
+# all monitors to clipboard
+bindsym --release Shift+Print exec "scrot -m /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+# selection to clipboard
+bindsym --release Control+Shift+Print exec "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
+# workspace to monitor mapping
+#workspace $ws1 output HDMI-2
+#workspace $ws2 output eDP-1
+
+# workspace layout setups
+
+# manual startup hacks
+#exec systemctl --user --no-block start graphical-login.target
