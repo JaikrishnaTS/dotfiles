@@ -124,6 +124,7 @@ set wildmenu        " menu for command completion
 " enable manpage support
 runtime! ftplugin/man.vim
 au FileType man setlocal nonumber tabstop=8 colorcolumn=
+au FileType tex let maplocalleader=" "
 
 " Underline function
 function! s:Underline(chars)
@@ -133,3 +134,10 @@ function! s:Underline(chars)
   put =strpart(uline, 0, nr_columns)
 endfunction
 command! -nargs=? Underline call s:Underline(<q-args>)
+
+function! ManMany(...)
+    for page in a:000
+        execute "Man ".page
+    endfor
+endfunction
+command! -nargs=+ ManMany call ManMany(<f-args>)
