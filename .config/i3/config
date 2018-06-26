@@ -98,6 +98,12 @@ bindsym $mod+Shift+p focus child
 bindsym $mod+Control+Shift+h split h, layout tabbed, focus left, move right
 bindsym $mod+Control+Shift+l split h, layout tabbed, focus right, move left
 
+# move window to scratchpad
+bindsym $mod+Shift+m move scratchpad
+
+# show the scratchpad
+bindsym $mod+m scratchpad show
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -200,8 +206,8 @@ bar {
 }
 
 # media/brightness buttons
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_sink +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_sink -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
@@ -229,3 +235,6 @@ bindsym --release Control+Shift+Print exec "import png:- | xclip -selection c -t
 
 # manual startup hacks
 #exec systemctl --user --no-block start graphical-login.target
+
+# default audio sink
+#set $audio_sink 0

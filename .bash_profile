@@ -8,7 +8,6 @@ fi
 # User specific environment and startup programs
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/go/bin:$HOME/.npm-global/bin
-
 export PATH
 
 PS1="\$? [\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;12m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \W]\\$ \[$(tput sgr0)\]"
@@ -43,7 +42,8 @@ alias vdiff='vimdiff'
 
 # vim Man page
 vman() {
-    vim -c "Man $1 $2" -c 'silent only'
+    manpages="ManMany $@"
+    vim -c "$manpages"
 }
 _vman () {
     _completion_loader man
