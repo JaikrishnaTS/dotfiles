@@ -141,16 +141,22 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# move the current worspace to another output
+bindsym $mod+Shift+bracketright move workspace to output right
+bindsym $mod+Shift+bracketleft move workspace to output left
+
+# back and forth
+workspace_auto_back_and_forth yes
+bindsym $mod+Tab workspace back_and_forth
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # locks
 set $ilock i3lock -c 000000
-bindsym $mod+Control+l exec --no-startup-id "$ilock"
+bindsym $mod+x exec --no-startup-id "$ilock"
 
 # exit_control
 set $exit_control System Control [S=Shutdown, R=Restart, E=logout, L=lock]
@@ -163,7 +169,7 @@ mode "$exit_control" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Control+e mode "$exit_control"
+bindsym $mod+Escape mode "$exit_control"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -177,6 +183,12 @@ mode "resize" {
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
+
+        # move windows
+        bindsym Shift+h move left 10 px
+        bindsym Shift+j move down 10 px
+        bindsym Shift+k move up 10 px
+        bindsym Shift+l move right 10 px
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
