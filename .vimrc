@@ -112,7 +112,6 @@ nmap <leader>j <C-W><C-J>
 nmap <leader>k <C-W><C-K>
 nmap <leader>l <C-W><C-L>
 nmap <leader>w :w<CR>
-nmap <leader>m /^\s*-
 
 " command bar settings
 set laststatus=2    " always show airline
@@ -124,6 +123,7 @@ set wildmenu        " menu for command completion
 " enable manpage support
 runtime! ftplugin/man.vim
 au FileType man setlocal nonumber tabstop=8 colorcolumn=
+au FileType man nmap - /^\s*-\+
 au FileType tex let maplocalleader=" "
 
 " Underline function
