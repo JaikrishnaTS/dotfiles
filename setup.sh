@@ -41,6 +41,16 @@ function setup_vim() {
     vim +PlugInstall +qall
 }
 
+## Setup util binaries
+function setup_bin() {
+    # create dirs
+    mkdir -p $HOME/.local/bin
+
+    # copy
+    cp bin/* $HOME/.local/bin
+}
+
+## Setup i3
 function setup_i3() {
     SEP="^#LOCAL_CHANGES$"
     REPO_FILE=${I3_CONF}
