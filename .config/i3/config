@@ -104,6 +104,9 @@ bindsym $mod+Shift+m move scratchpad
 # show the scratchpad
 bindsym $mod+m scratchpad show
 
+# search & swap among inactive scratchpads with dmenu
+bindsym $mod+comma exec ~/.local/bin/i3-scratchpad-dmenu.py
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -167,6 +170,7 @@ mode "$exit_control" {
     bindsym s mode "default"; exec --no-startup-id systemctl poweroff; mode "default"
     bindsym l mode "default"; exec --no-startup-id "$ilock"; mode "default"
     bindsym Escape mode "default"
+    bindsym Return mode "default"
 }
 
 bindsym $mod+Escape mode "$exit_control"
@@ -207,6 +211,8 @@ bindsym $mod+r mode "resize"
 # mouse actions
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button2 kill
+# middle button on the title kills the window
+bindsym --release button2 kill
 
 # The right button toggles floating
 bindsym $mod+button3 floating toggle
@@ -218,8 +224,8 @@ bar {
 }
 
 # media/brightness buttons
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_sink +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_sink -5% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
@@ -247,6 +253,3 @@ bindsym --release Control+Shift+Print exec "import png:- | xclip -selection c -t
 
 # manual startup hacks
 #exec systemctl --user --no-block start graphical-login.target
-
-# default audio sink
-#set $audio_sink 0
