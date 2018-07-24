@@ -162,13 +162,14 @@ set $ilock i3lock -c 000000
 bindsym $mod+x exec --no-startup-id "$ilock"
 
 # exit_control
-set $exit_control System Control [S=Shutdown, R=Restart, E=logout, L=lock]
+set $exit_control System Control [S=Shutdown, R=Restart, E=Logout, L=Lock, Z=Sleep]
 
 mode "$exit_control" {
     bindsym e mode "default"; exit
-    bindsym r mode "default"; exec --no-startup-id systemctl reboot; mode "default"
-    bindsym s mode "default"; exec --no-startup-id systemctl poweroff; mode "default"
-    bindsym l mode "default"; exec --no-startup-id "$ilock"; mode "default"
+    bindsym r mode "default"; exec --no-startup-id systemctl reboot
+    bindsym s mode "default"; exec --no-startup-id systemctl poweroff
+    bindsym z mode "default"; exec --no-startup-id systemctl suspend
+    bindsym l mode "default"; exec --no-startup-id "$ilock"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
