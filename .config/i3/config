@@ -231,6 +231,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
+# audio sink selector
+bindsym $mod+a exec --no-startup-id switch_audio.sh
+
 # toggle touchpad
 bindsym $mod+t exec --no-startup-id "~/.local/bin/xinput_toggle.sh 'Touch[p,P]ad'"
 
