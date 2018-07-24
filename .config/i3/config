@@ -231,7 +231,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # toggle touchpad
-bindsym $mod+t exec --no-startup-id "~/.local/bin/xinput-toggle.sh 'Touch[p,P]ad'"
+bindsym $mod+t exec --no-startup-id "~/.local/bin/xinput_toggle.sh 'Touch[p,P]ad'"
 
 # shortcuts
 bindsym $mod+g exec google-chrome
