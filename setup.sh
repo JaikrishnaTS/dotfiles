@@ -4,6 +4,7 @@ BASH_PROFILE=".bash_profile"
 TMUX_CONF=".tmux.conf"
 VIMRC=".vimrc"
 I3_CONF=".config/i3/config"
+I3STATUS_CONF=".config/i3status/config"
 
 ## Setup bash
 function setup_bash() {
@@ -61,6 +62,8 @@ function setup_i3() {
     sed -e "0,/${SEP}/d" ${LOCAL_FILE} >> ${TEMP_FILE}
     diff ${LOCAL_FILE} ${TEMP_FILE}
     mv ${TEMP_FILE} ${LOCAL_FILE}
+
+    cp ${I3STATUS_CONF} $HOME/${I3STATUS_CONF}
 }
 
 function diff_cfg() {
