@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dev_reg=${1?Must provide device name regex}
-dev_name=`xinput list --name-only | sed -n "/${dev_reg}/p"`
+dev_name=`xinput list --name-only | sed -n "/${dev_reg}/{p; q}"`
 
 if [[ -z ${dev_name} ]]; then
     notify-send "Unable to find device with given regex"
@@ -9,7 +9,7 @@ if [[ -z ${dev_name} ]]; then
 fi
 
 is_enabled=`xinput list-props "${dev_name}" | 
-    sed -n 's/^\s\+Device Enabled ([0-9]\+):\s\+\([0,1]\)$/\1/p'`
+    sed -n 's/^\s\+Device Enabled ([0-9]\+):\s\+\([0,1]\)$/\1/{p; q}'`
 
 if [[ ${is_enabled} -eq 1 ]]; then
     notify-send "Device ${dev_name} disabled"
