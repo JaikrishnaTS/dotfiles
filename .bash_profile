@@ -10,7 +10,10 @@ fi
 PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/go/bin:$HOME/.npm-global/bin
 export PATH
 
-PS1="\$? [\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;12m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \W]\\$ \[$(tput sgr0)\]"
+RST_ALL="\[\e[0m\]"
+FG_COL="\[\e[38;5;COLm\]"
+PS1="${RST_ALL}\$? [${FG_COL/COL/10}\u${RST_ALL}@${FG_COL/COL/12}\h${RST_ALL} \W]$ "
+#PS1="\$? [\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;12m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \W]\\$ \[$(tput sgr0)\]"
 
 # set EDITOR
 export EDITOR='/usr/bin/vim'
