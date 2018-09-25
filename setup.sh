@@ -9,6 +9,7 @@ I3STATUS_CONF=".config/i3status/config"
 ## Setup bash
 function setup_bash() {
     cp .bash_profile $HOME/.bash_profile
+    cp .inputrc $HOME/.inputrc
 }
 
 ## Setup tmux
