@@ -81,6 +81,10 @@ set tabstop=4       " 4 spaces in a tab
 set shiftwidth=4
 set softtabstop=4
 
+" list settings
+set listchars=tab:>-,trail:~,extends:>,precedes:<,nbsp:␣
+set list
+
 " search settings 
 set incsearch       " show first match as entered
 set hlsearch        " highlight all after <cr>, :noh to unhighlight
