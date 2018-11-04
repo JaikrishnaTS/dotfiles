@@ -19,7 +19,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-scripts/DoxygenToolkit.vim'
     Plug 'nanotech/jellybeans.vim'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'Rykka/riv.vim'
     Plug 'nvie/vim-flake8'
     Plug 'fatih/vim-go'
 call plug#end()
@@ -58,9 +57,6 @@ nmap <leader>T :bp<CR>
 let g:webdevicons_enable_airline_tabline = 1
 " adding to vim-airline's statusline 
 let g:webdevicons_enable_airline_statusline = 1
-
-" riv disable folding
-let g:riv_disable_folding = 1
 
 " netrw settings
 let g:netrw_liststyle = 3
