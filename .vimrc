@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'nanotech/jellybeans.vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'nvie/vim-flake8'
-    Plug 'fatih/vim-go'
+    "Plug 'fatih/vim-go'
 call plug#end()
 
 " setup vim-airline
@@ -122,7 +122,7 @@ set wildmenu        " menu for command completion
 
 " enable manpage support
 runtime! ftplugin/man.vim
-au FileType man setlocal nonumber tabstop=8 colorcolumn=
+au FileType man setlocal nolist nonumber tabstop=8 colorcolumn=
 au FileType man nmap - /^\s*-\+
 au FileType tex let maplocalleader=" "
 
