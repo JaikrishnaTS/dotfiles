@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'ryanoasis/vim-devicons'
     Plug 'nvie/vim-flake8'
     "Plug 'fatih/vim-go'
+    Plug 'dkarter/bullets.vim'
 call plug#end()
 
 " setup vim-airline
@@ -39,6 +40,7 @@ let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 set hidden " allow to leave unsaved buffers
+let g:bullets_enabled_file_types = ['markdown', 'text', 'gitcommit', 'rst']
 
 " buffer navigation
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -125,6 +127,7 @@ runtime! ftplugin/man.vim
 au FileType man setlocal nolist nonumber tabstop=8 colorcolumn=
 au FileType man nmap - /^\s*-\+
 au FileType tex let maplocalleader=" "
+au FileType rst set nofoldenable
 
 " Underline function
 function! s:Underline(chars)
