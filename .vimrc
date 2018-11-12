@@ -125,7 +125,7 @@ set wildmenu        " menu for command completion
 " enable manpage support
 runtime! ftplugin/man.vim
 au FileType man setlocal nolist nonumber tabstop=8 colorcolumn=
-au FileType man nmap - /^\s*-\+
+au FileType man nmap / /^\s*
 au FileType tex let maplocalleader=" "
 au FileType rst set nofoldenable
 
