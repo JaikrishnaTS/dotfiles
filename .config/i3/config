@@ -159,7 +159,9 @@ bindsym $mod+Shift+r restart
 
 # locks
 set $ilock i3lock -c 000000
-bindsym $mod+x exec --no-startup-id "$ilock"
+bindsym $mod+x exec --no-startup-id $ilock && xset dpms force off
+# Lock screen using i3lock upon suspend
+exec --no-startup-id xss-lock -l -- $ilock
 
 # exit_control
 set $exit_control System Control [S=Shutdown, R=Restart, E=Logout, L=Lock, Z=Sleep]
@@ -229,8 +231,8 @@ bar {
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
 
 # audio sink selector
 bindsym $mod+a exec --no-startup-id ~/.local/bin/switch_audio.sh
@@ -260,4 +262,4 @@ bindsym --release Control+Shift+Print exec "import png:- | xclip -selection c -t
 # workspace layout setups
 
 # manual startup hacks
-#exec systemctl --user --no-block start graphical-login.target
+#exec --no-startup-id systemctl --user --no-block start graphical-login.target
