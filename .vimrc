@@ -1,11 +1,14 @@
 
 set nocompatible
 
-" setup colors
-set term=screen-256color
-set t_Co=256
-
 set encoding=utf8
+
+" setup colors
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " key remaps
 nnoremap ; :
@@ -24,14 +27,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'dkarter/bullets.vim'
 call plug#end()
 
+colorscheme jellybeans  " set color scheme
+
 " setup vim-airline
 let g:airline_theme='hybridline'
 let g:airline_powerline_fonts = 1
-
-" load doxygen
-let g:load_doxygen_syntax = 1
-
-colorscheme jellybeans  " set color scheme
 
 " buffer settings
 " Enable buffer bar at top - only when >1 buffer
@@ -125,7 +125,7 @@ set wildmenu        " menu for command completion
 " enable manpage support
 runtime! ftplugin/man.vim
 au FileType man setlocal nolist nonumber tabstop=8 colorcolumn=
-au FileType man nmap / /^\s*
+au FileType man nmap <leader>s /^\s*
 au FileType tex let maplocalleader=" "
 au FileType rst set nofoldenable
 
